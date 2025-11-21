@@ -13,7 +13,7 @@ import colors from './styles/colors';
 const App = () => {
   const [selectedView, setSelectedView] = useState('overview');
 
-  // Calculate team statistics
+  // Team stats
   const totalGoals = playersData.reduce((sum, p) => sum + p.goals, 0);
   const totalAssists = playersData.reduce((sum, p) => sum + p.assists, 0);
   const avgRating = (playersData.reduce((sum, p) => sum + p.rating, 0) / playersData.length).toFixed(2);
@@ -27,6 +27,8 @@ const App = () => {
       fontFamily: 'Inter, system-ui, sans-serif',
       padding: '2rem'
     }}>
+      
+      {/* HEADER */}
       <Header 
         totalGoals={totalGoals}
         totalAssists={totalAssists}
@@ -34,11 +36,13 @@ const App = () => {
         squadSize={squadSize}
       />
 
+      {/* NAVIGATION */}
       <Navigation 
         selectedView={selectedView}
         setSelectedView={setSelectedView}
       />
 
+      {/* VIEWS */}
       {selectedView === 'overview' && <Overview playersData={playersData} />}
       {selectedView === 'attackers' && <Attackers playersData={playersData} />}
       {selectedView === 'midfielders' && <Midfielders playersData={playersData} />}
@@ -46,9 +50,9 @@ const App = () => {
       {selectedView === 'comparison' && <PlayerComparison playersData={playersData} />}
 
       <Footer />
+
     </div>
   );
 };
 
 export default App;
-

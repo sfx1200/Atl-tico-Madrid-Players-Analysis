@@ -1,0 +1,66 @@
+# --- Node ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Build Output ---
+dist/
+build/
+.cache/
+.temp/
+
+# --- Environment Files ---
+.env
+.env.*.local
+
+# --- Logs ---
+logs/
+*.log
+*.log.*
+
+# --- OS Files ---
+.DS_Store
+Thumbs.db
+*.swp
+
+# --- IDE & Editor ---
+.vscode/
+.idea/
+*.iml
+
+# --- Testing ---
+coverage/
+jest-cache/
+jest-temp/
+
+# --- Compiled output ---
+*.tsbuildinfo
+
+# --- Local data ---
+*.local
+*.bak
+
+# --- Misc ---
+*.zip
+*.rar
+*.7z
+
+# --- Ignore everything by default ---
+*
+
+# --- But keep essential project files ---
+!package.json
+!package-lock.json
+!yarn.lock
+!pnpm-lock.yaml
+!vite.config.*
+!webpack.config.*
+!tsconfig.json
+!jsconfig.json
+!.gitignore
+!README.md
+
+# --- Keep folders with source code ---
+!src/
+!public/

@@ -1,11 +1,9 @@
 import React from 'react';
 import TopScorers from './TopScorers';
 import GoalContributions from './GoalContributions';
-import SquadDistribution from './SquadDistribution';
-import PerformanceScatter from './PerformanceScatter';
 
 const Overview = ({ playersData }) => {
-  // Top scorers data
+  // Top scorers
   const topScorers = [...playersData]
     .filter(p => p.position !== 'GK')
     .sort((a, b) => b.goals - a.goals)
@@ -23,43 +21,15 @@ const Overview = ({ playersData }) => {
     .sort((a, b) => b.total - a.total)
     .slice(0, 10);
 
-  // Position distribution
-  const positionData = [
-    { 
-      name: 'Forwards', 
-      value: playersData.filter(p => ['ST', 'LS', 'FW', 'RW', 'LW'].includes(p.position)).length, 
-      color: '#DC143C' 
-    },
-    { 
-      name: 'Midfielders', 
-      value: playersData.filter(p => p.position === 'CM').length, 
-      color: '#00205B' 
-    },
-    { 
-      name: 'Defenders', 
-      value: playersData.filter(p => ['CB', 'RB', 'LB'].includes(p.position)).length, 
-      color: '#FFFFFF' 
-    },
-    { 
-      name: 'Goalkeepers', 
-      value: playersData.filter(p => p.position === 'GK').length, 
-      color: '#FFD700' 
-    },
-  ];
-
-  // Performance scatter data
-  const scatterData = playersData.filter(p => p.position !== 'GK');
-
   return (
     <div style={{ 
       display: 'grid', 
       gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))', 
-      gap: '2rem' 
+      gap: '2rem',
+      marginTop: '2rem'
     }}>
       <TopScorers data={topScorers} />
       <GoalContributions data={goalsAssists} />
-      <SquadDistribution data={positionData} />
-      <PerformanceScatter data={scatterData} />
     </div>
   );
 };
